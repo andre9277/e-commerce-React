@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <ShoppingCart />
+        <ShoppingCart x="10" />
       </div>
     );
   }

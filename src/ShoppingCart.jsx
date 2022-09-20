@@ -2,15 +2,21 @@ import React, { Component } from "react";
 import Product from "./Product";
 
 export default class ShoppingCart extends Component {
-  state = {
-    products: [
-      { id: 1, productName: "iPhone", price: 990, quantity: 0 },
-      { id: 2, productName: "TV", price: 200, quantity: 0 },
-      { id: 3, productName: "Radio", price: 60, quantity: 0 },
-      { id: 4, productName: "Computer", price: 1000, quantity: 0 },
-      { id: 5, productName: "Hat", price: 20, quantity: 0 },
-    ],
-  };
+  //inicia quando um objeto desta classe é criado(qd a componente é mounted)
+  constructor(props) {
+    super(props); //chamamos a super class constructor (Component)--pode ter propriedade no super e construtor
+
+    //inicialização do state
+    this.state = {
+      products: [
+        { id: 1, productName: "iPhone", price: 990, quantity: 0 },
+        { id: 2, productName: "TV", price: 200, quantity: 0 },
+        { id: 3, productName: "Radio", price: 60, quantity: 0 },
+        { id: 4, productName: "Computer", price: 1000, quantity: 0 },
+        { id: 5, productName: "Hat", price: 20, quantity: 0 },
+      ],
+    };
+  }
 
   //map dá acesso a cada produto
   render() {
@@ -76,4 +82,14 @@ export default class ShoppingCart extends Component {
       this.setState({ products: allProducts });
     }
   };
+
+  //execute depois do construtor e do render metodo(inclui o ciclo de vida da child components, se houver algum) do componente atual
+  componentDidMount() {
+    //fetch data from data source
+  }
+
+  componentDidUpdate(prevPros, prevState) {}
+
+  //executa quando a instância atual do componente atual esta a ser apagada da memoria
+  componentWillUnmount() {}
 }
