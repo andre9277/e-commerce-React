@@ -7,3 +7,12 @@
 {
     background-color: #0c8351 !important;
 }
+
+.badge
+{
+    color: #0c8351;
+}
+
+.hand-icon{
+    cursor:pointer;
+}
