@@ -8,13 +8,7 @@ export default class ShoppingCart extends Component {
 
     //inicialização do state
     this.state = {
-      products: [
-        { id: 1, productName: "iPhone", price: 990, quantity: 0 },
-        { id: 2, productName: "TV", price: 200, quantity: 0 },
-        { id: 3, productName: "Radio", price: 60, quantity: 0 },
-        { id: 4, productName: "Computer", price: 1000, quantity: 0 },
-        { id: 5, productName: "Hat", price: 20, quantity: 0 },
-      ],
+      products: [],
     };
   }
 
@@ -86,10 +80,28 @@ export default class ShoppingCart extends Component {
   //execute depois do construtor e do render metodo(inclui o ciclo de vida da child components, se houver algum) do componente atual
   componentDidMount() {
     //fetch data from data source
+    var promise = fetch("http://localhost5000/products", { method: "GET" });
+    promise.then((response) => {
+      console.log(response);
+
+      var promise2 = response.json();
+      promise2.then((prods) => {
+        console.log(prods);
+
+        this.setState({ products: prods });
+      });
+    });
   }
 
   componentDidUpdate(prevPros, prevState) {}
 
   //executa quando a instância atual do componente atual esta a ser apagada da memoria
   componentWillUnmount() {}
+
+  componentDidCatch(error, info) {
+    console.log(error, info);
+
+    //erro na localStorage
+    localStorage.latError = `${error}\n${JSON.stringify(info)}`;
+  }
 }

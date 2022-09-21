@@ -1,5 +1,6 @@
 import { Component } from "react";
 import CustomerList from "./CustomerList";
+import Login from "./Login";
 import NavBar from "./NavBar";
 import ShoppingCart from "./ShoppingCart";
 
@@ -9,7 +10,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <ShoppingCart x="10" />
+        <ShoppingCart />
       </div>
     );
   }
